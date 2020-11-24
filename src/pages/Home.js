@@ -1,9 +1,14 @@
 import React from "react";
-import EmployeePage from "../components/EmployeePage";
+import GetEmployees from "../components/getEmployees/getEmployees"
+import Header from "../components/header/header"
 
 function Home() {
     return (
-        <EmployeePage/>
+        <div>
+            <Header/>
+            <GetEmployees/>
+        </div>
+        
     )
 };
 
