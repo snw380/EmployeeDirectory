@@ -1,15 +1,36 @@
-import React from "react";
-import GetEmployees from "../components/getEmployees/getEmployees"
+import React from 'react';
+import EmployeeTable from "../components/EmployeeTable/EmployeeTable";
 import Header from "../components/header/header"
+import data from '../data/employees.json';
 
-function Home() {
+class Home extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: data
+    }
+
+    this.sortBy = this.sortBy.bind(this)
+  }
+
+  sortBy(key) {
+    console.log(key)
+    this.setState({
+      data: data.sort((a, b) => a[key] - b[key])
+    })
+  }
+
+  render() {
     return (
-        <div>
-            <Header/>
-            <GetEmployees/>
-        </div>
-        
-    )
+      <div className="page-container">       
+        <Header/>
+        <EmployeeTable 
+        data={this.state.data}
+        sortBy={this.sortBy}
+        />
+      </div>
+    );
+  }
 };
 
 export default Home;
